@@ -1,0 +1,54 @@
+<ion-header style="height: 30%;background: url('../../../assets/img/background.png');">
+    <img src="../../../assets/img/logo2.png" alt="">
+</ion-header>
+<ion-content>
+    <ion-grid style="text-align: center;">
+        <ion-row style="padding: 15px;">
+            <!-- style="border-style: none none solid none;border-color: blue" -->
+            <ion-col style="border-style: none none solid none;border-color: blue">
+                验证码登录
+            </ion-col>
+            <ion-col style="border-style: none none solid none;border-width: 1px;border-color: grey;">
+                密码登录
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-slides pager="false">
+
+        <ion-slide>
+            <ion-list>
+                <ion-item>
+                    <ion-select value="+86"
+                        style="height: 20px;padding-right: 5px;border-right: solid;border-width: 1px;border-color: grey;">
+                        <ion-select-option value="+86">
+                            +86
+                        </ion-select-option>
+                    </ion-select>
+                    <ion-input type="number" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
+                </ion-item>
+                <ion-button color="primary" style="width: 100%;margin-top: 50px;">下一步</ion-button>
+                <div style="width: 100%; text-align: right;margin-top: 5px;">
+                    <ion-label style="text-align: right;font-size: 15px;">新用户注册</ion-label>
+                </div>
+            </ion-list>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <ion-input type="number" placeholder="请输入账号"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <ion-input type="password" placeholder="请输入密码"></ion-input>
+                </ion-item>
+                <ion-button color="primary" style="width: 100%;margin-top: 50px;">登录</ion-button>
+                <div style="width: 90%;height: 45px;text-align: right;margin: 0 auto;">
+                    <ion-label style="font-size: 15px;margin-top: 10px;float: left;">忘记密码？</ion-label>
+                    <ion-label style="font-size: 15px;margin-top: 10px;float: right;"><a href="#">新用户注册</a></ion-label>
+                </div> 
+            </ion-list>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

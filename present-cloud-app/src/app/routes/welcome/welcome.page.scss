@@ -1,0 +1,32 @@
+
+    ion-toolbar {
+      --background: transparent;
+      --border-color: transparent;
+    }
+    
+    .hydrated {
+        visibility: inherit;
+        margin-bottom: -7px;
+    }
+    .myclass1{
+        transition: 0.5s;
+        opacity: 0;
+        position: fixed;
+    }
+    .myclass2{
+        transition: 2s;
+        opacity: 1;
+        position: fixed;
+        bottom: 3%;
+        z-index: 1;
+        width: 100%;
+    }
+    app-welcome .hydrated{
+        margin-bottom: 0px;
+    }
+
+    .swiper-zoom-container>canvas, .swiper-zoom-container>img, .swiper-zoom-container>svg{
+        height: 100%;
+        width: 100%;
+        object-fit: fill
+    }

@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons style="position: absolute;right: 0" slot="end" [hidden]="hideSkip">
+      <ion-button (click)="onSkip()" color="primary">
+          跳过
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">到云app</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+  <ion-slides (ionSlideWillChange)="slidesWillChange()" style="height: 100%;">
+    <ion-slide>
+      <img src="/assets/img/splsh_one.png" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="/assets/img/splsh_two.png" alt="">
+    </ion-slide>
+    <ion-slide>
+        <img src="assets/img/splsh_three.png">
+    </ion-slide>
+  </ion-slides>
+  <!-- 在对style属性赋值的时候，要精确到具体的样式名 -->
+  <!-- <div [style.transition]="mytransition" [style.opacity]="myopacity" style="display: block"> -->
+  <div [class]="myclass">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="onClick()">进入程序</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+
+
