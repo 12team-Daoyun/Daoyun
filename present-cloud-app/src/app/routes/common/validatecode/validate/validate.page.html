@@ -1,0 +1,36 @@
+<ion-header style="height: 30%;background: url('../../../assets/img/background.png');">
+  <img src="../../../assets/img/logo2.png" alt="">
+</ion-header>
+<ion-content>
+  <ion-slides pager="false">
+      <ion-slide>
+          <ion-list style="margin-top: 10px;">
+              <ion-item>
+                <ion-icon name="call-outline"></ion-icon>
+                <ion-input type="number" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
+              </ion-item>
+              <ion-button color="primary" style="width: 100%;margin-top: 50px;">获取验证码</ion-button>
+              <div style="width: 100%; text-align: right;">
+                  <ion-label style="text-align: right;font-size: 15px;margin-top: 10px">已注册，去登陆</ion-label>
+              </div>     
+          </ion-list>
+      </ion-slide>
+  
+      <ion-slide>
+        <ion-list style="width: 80%;margin-top: 10px;">
+          <div style="margin-bottom: 10px;width: 100%;height:100%">
+            <ion-label>验证码已发送至 17000000000</ion-label>
+          </div>
+          <ion-item>
+            <ion-input type="number" placeholder="请输入验证码"></ion-input>
+          </ion-item>
+          <div style="width: 90%;height: 45px;text-align: right;margin: 0 auto;">
+            <ion-label style="font-size: 15px;margin-top: 10px;float: left;">收不到验证码</ion-label>
+            <ion-label style="font-size: 15px;margin-top: 10px;float: right;"><a href="#">50s后重新获取</a></ion-label>
+          </div> 
+          <ion-button color="primary" style="width: 100%;margin-top: 150px;">登录</ion-button>
+        </ion-list>
+      </ion-slide>
+    </ion-slides>
+</ion-content>
+

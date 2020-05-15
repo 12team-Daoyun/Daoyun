@@ -1,0 +1,51 @@
+<ion-content>
+
+  <div padding-horizontal style="height: 100%;background-image: url(../../assets/icon/bg.jpg);">
+    <div id="yourheader">
+      <div>
+
+      </div>
+    </div>
+    <div style="width: 100%;position: absolute;margin-top: -5%;">
+      <img src="../../assets/icon/logo.jpg"
+        style="width: 140px;height: 140px;border-radius: 50%;margin: 25px auto;display: block;">
+    </div>
+    <div style="width: 100%;height: 40%;margin: 40 auto;position: relative;
+    top: 27%;border-radius: 10px;">
+      <form #loginForm="ngForm" style="width: 300px;margin: 0 auto;padding-top: 45px;">
+        <div class="myDiv">
+          <ion-item class="myItem">
+
+            <ion-label position="fixed" style="font-size: 15px;flex: 0.1 0 60px;"><strong>用户姓名:</strong></ion-label>
+            <div class="splitLine"></div>
+            <ion-input name="username" type="text" placeholder="请输入您的真实姓名" [(ngModel)]="username"></ion-input>
+
+          </ion-item>
+          <ion-item class="myItem">
+            <ion-label position="fixed" style="font-size: 15px;flex: 0.1 0 60px;"><strong>证件号码:</strong></ion-label>
+            <div class="splitLine"></div>
+            <ion-input name="idCard" type="text" placeholder="请输入您的身份证号码" [(ngModel)]="idCard"></ion-input>
+          </ion-item>
+          <div>
+            <ion-label style="margin-right: 3%;color: wheat;margin-left: 10px">上传至服务器</ion-label>
+            <ion-toggle style="padding: 2px;" color="light" [(ngModel)]="uploadState" name="uploadState"></ion-toggle>
+          </div>
+
+        </div>
+        <ion-grid class="myButton" style="margin-top: 15%;">
+          <ion-row>
+            <ion-col>
+              <ion-button style="border-radius: 5px;height: 40px;" expand="full" color="primary" (click)="readPic()">
+                通过照片读取证件信息
+              </ion-button>
+              
+              <ion-button style="border-radius: 5px;height: 40px;margin-top:10px" expand="full" color="primary" (click)="infoBackup()">
+                开始备份
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </div>
+</ion-content>

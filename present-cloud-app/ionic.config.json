@@ -1,0 +1,7 @@
+{
+  "name": "present-cloud-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

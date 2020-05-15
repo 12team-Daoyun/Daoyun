@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons style="position: absolute;" slot="start">
+      <ion-back-button defaultHref="" text="返回"></ion-back-button>
+      </ion-buttons>
+      <ion-title style="text-align: center;">创建班课</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>班课名字</ion-label>
+      <ion-input type="text" placeholder="请输入班课名字"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>任课老师</ion-label>
+      <ion-input type="text" placeholder="请输入任课老师姓名"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>备注信息</ion-label>
+      <ion-input type="text" placeholder="请输入备注信息"></ion-input>
+    </ion-item>
+    <ion-button (click)="onClick()" expand="block" style="width: 90%;margin: 90px auto" shape="round">
+      完成
+    </ion-button>
+  </ion-list>
+</ion-content>
