@@ -79,55 +79,112 @@ export const asyncRouterMap = [
         path: '/list',
         name: 'list',
         component: PageView,
-        redirect: '/list/table-list',
+        redirect: '/list/welcome',
         meta: { title: '菜单项', icon: 'table', permission: [ 'table' ] },
         children: [
           {
-            path: '/list/table-list/:pageNo([1-9]\\d*)?',
-            name: 'TableListWrapper',
+            path: '/list/welcome',
+            name: 'Welcome',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '查询表格', keepAlive: true, permission: [ 'table' ] }
+            component: () => import('@/views/welcome'),
+            meta: { title: '欢迎页', keepAlive: true, permission: [ 'table' ] }
           },
           {
-            path: '/list/basic-list',
-            name: 'BasicList',
-            component: () => import('@/views/list/StandardList'),
-            meta: { title: '标准列表', keepAlive: true, permission: [ 'table' ] }
+            path: '/list/dict/:pageNo([1-9]\\d*)?',
+            name: 'DictManage',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/DictManage'),
+            meta: { title: '字典管理', keepAlive: true, permission: [ 'table' ] }
           },
           {
-            path: '/list/card',
-            name: 'CardList',
-            component: () => import('@/views/list/CardList'),
-            meta: { title: '卡片列表', keepAlive: true, permission: [ 'table' ] }
+            path: '/list/User/:pageNo([1-9]\\d*)?',
+            name: 'UserList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/User'),
+            meta: { title: '用户管理', keepAlive: true, permission: [ 'table' ] }
           },
           {
-            path: '/list/search',
-            name: 'SearchList',
-            component: () => import('@/views/list/search/SearchLayout'),
-            redirect: '/list/search/article',
-            meta: { title: '搜索列表', keepAlive: true, permission: [ 'table' ] },
-            children: [
-              {
-                path: '/list/search/article',
-                name: 'SearchArticles',
-                component: () => import('../views/list/search/Article'),
-                meta: { title: '搜索列表（文章）', permission: [ 'table' ] }
-              },
-              {
-                path: '/list/search/project',
-                name: 'SearchProjects',
-                component: () => import('../views/list/search/Projects'),
-                meta: { title: '搜索列表（项目）', permission: [ 'table' ] }
-              },
-              {
-                path: '/list/search/application',
-                name: 'SearchApplications',
-                component: () => import('../views/list/search/Applications'),
-                meta: { title: '搜索列表（应用）', permission: [ 'table' ] }
-              }
-            ]
+            path: '/list/Role/:pageNo([1-9]\\d*)?',
+            name: 'RoleList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/Role'),
+            meta: { title: '角色管理', keepAlive: true, permission: [ 'table' ] }
+          },
+          {
+            path: '/list/Permission',
+            name: 'PermissionList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/Permission'),
+            meta: { title: '权限管理', keepAlive: true, permission: [ 'table' ] }
+          },
+          // {
+          //   path: '/list/School',
+          //   name: 'SchoolList',
+          //   hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+          //   component: () => import('@/views/list/School'),
+          //   meta: { title: '院校管理', keepAlive: true, permission: [ 'table' ] }
+          // },
+          {
+            path: '/list/Student',
+            name: 'StudentList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/Student'),
+            meta: { title: '学生管理', keepAlive: true, permission: [ 'table' ] }
+          },
+          {
+            path: '/list/Teacher',
+            name: 'TeacherList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/Teacher'),
+            meta: { title: '教师管理', keepAlive: true, permission: [ 'table' ] }
+          },
+          {
+            path: '/list/Course',
+            name: 'CourseList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/Course'),
+            meta: { title: '课程管理', keepAlive: true, permission: [ 'table' ] }
           }
+
+          // {
+          //   path: '/list/basic-list',
+          //   name: 'BasicList',
+          //   component: () => import('@/views/list/StandardList'),
+          //   meta: { title: '标准列表', keepAlive: true, permission: [ 'table' ] }
+          // },
+          // {
+          //   path: '/list/card',
+          //   name: 'CardList',
+          //   component: () => import('@/views/list/CardList'),
+          //   meta: { title: '卡片列表', keepAlive: true, permission: [ 'table' ] }
+          // },
+          // {
+          //   path: '/list/search',
+          //   name: 'SearchList',
+          //   component: () => import('@/views/list/search/SearchLayout'),
+          //   redirect: '/list/search/article',
+          //   meta: { title: '搜索列表', keepAlive: true, permission: [ 'table' ] },
+          //   children: [
+          //     {
+          //       path: '/list/search/article',
+          //       name: 'SearchArticles',
+          //       component: () => import('../views/list/search/Article'),
+          //       meta: { title: '搜索列表（文章）', permission: [ 'table' ] }
+          //     },
+          //     {
+          //       path: '/list/search/project',
+          //       name: 'SearchProjects',
+          //       component: () => import('../views/list/search/Projects'),
+          //       meta: { title: '搜索列表（项目）', permission: [ 'table' ] }
+          //     },
+          //     {
+          //       path: '/list/search/application',
+          //       name: 'SearchApplications',
+          //       component: () => import('../views/list/search/Applications'),
+          //       meta: { title: '搜索列表（应用）', permission: [ 'table' ] }
+          //     }
+          //   ]
+          // }
         ]
       },
 
@@ -154,27 +211,27 @@ export const asyncRouterMap = [
       //   ]
       // },
       // result
-      {
-        path: '/result',
-        name: 'result',
-        component: PageView,
-        redirect: '/result/success',
-        meta: { title: '结果页', icon: 'check-circle-o', permission: [ 'result' ] },
-        children: [
-          {
-            path: '/result/success',
-            name: 'ResultSuccess',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/result/Success'),
-            meta: { title: '成功', keepAlive: false, hiddenHeaderContent: true, permission: [ 'result' ] }
-          },
-          {
-            path: '/result/fail',
-            name: 'ResultFail',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/result/Error'),
-            meta: { title: '失败', keepAlive: false, hiddenHeaderContent: true, permission: [ 'result' ] }
-          }
-        ]
-      },
+      // {
+      //   path: '/result',
+      //   name: 'result',
+      //   component: PageView,
+      //   redirect: '/result/success',
+      //   meta: { title: '结果页', icon: 'check-circle-o', permission: [ 'result' ] },
+      //   children: [
+      //     {
+      //       path: '/result/success',
+      //       name: 'ResultSuccess',
+      //       component: () => import(/* webpackChunkName: "result" */ '@/views/result/Success'),
+      //       meta: { title: '成功', keepAlive: false, hiddenHeaderContent: true, permission: [ 'result' ] }
+      //     },
+      //     {
+      //       path: '/result/fail',
+      //       name: 'ResultFail',
+      //       component: () => import(/* webpackChunkName: "result" */ '@/views/result/Error'),
+      //       meta: { title: '失败', keepAlive: false, hiddenHeaderContent: true, permission: [ 'result' ] }
+      //     }
+      //   ]
+      // },
 
       // Exception
       {
@@ -203,64 +260,64 @@ export const asyncRouterMap = [
             meta: { title: '500', permission: [ 'exception' ] }
           }
         ]
-      },
+      }
 
       // account
-      {
-        path: '/account',
-        component: RouteView,
-        redirect: '/account/center',
-        name: 'account',
-        meta: { title: '个人页', icon: 'user', keepAlive: true, permission: [ 'user' ] },
-        children: [
-          {
-            path: '/account/center',
-            name: 'center',
-            component: () => import('@/views/account/center/Index'),
-            meta: { title: '个人中心', keepAlive: true, permission: [ 'user' ] }
-          },
-          {
-            path: '/account/settings',
-            name: 'settings',
-            component: () => import('@/views/account/settings/Index'),
-            meta: { title: '个人设置', hideHeader: true, permission: [ 'user' ] },
-            redirect: '/account/settings/base',
-            hideChildrenInMenu: true,
-            children: [
-              {
-                path: '/account/settings/base',
-                name: 'BaseSettings',
-                component: () => import('@/views/account/settings/BaseSetting'),
-                meta: { title: '基本设置', hidden: true, permission: [ 'user' ] }
-              },
-              {
-                path: '/account/settings/security',
-                name: 'SecuritySettings',
-                component: () => import('@/views/account/settings/Security'),
-                meta: { title: '安全设置', hidden: true, keepAlive: true, permission: [ 'user' ] }
-              },
-              {
-                path: '/account/settings/custom',
-                name: 'CustomSettings',
-                component: () => import('@/views/account/settings/Custom'),
-                meta: { title: '个性化设置', hidden: true, keepAlive: true, permission: [ 'user' ] }
-              },
-              {
-                path: '/account/settings/binding',
-                name: 'BindingSettings',
-                component: () => import('@/views/account/settings/Binding'),
-                meta: { title: '账户绑定', hidden: true, keepAlive: true, permission: [ 'user' ] }
-              },
-              {
-                path: '/account/settings/notification',
-                name: 'NotificationSettings',
-                component: () => import('@/views/account/settings/Notification'),
-                meta: { title: '新消息通知', hidden: true, keepAlive: true, permission: [ 'user' ] }
-              }
-            ]
-          }
-        ]
-      }
+      // {
+      //   path: '/account',
+      //   component: RouteView,
+      //   redirect: '/account/center',
+      //   name: 'account',
+      //   meta: { title: '个人页', icon: 'user', keepAlive: true, permission: [ 'user' ] },
+      //   children: [
+      //     {
+      //       path: '/account/center',
+      //       name: 'center',
+      //       component: () => import('@/views/account/center/Index'),
+      //       meta: { title: '个人中心', keepAlive: true, permission: [ 'user' ] }
+      //     },
+      //     {
+      //       path: '/account/settings',
+      //       name: 'settings',
+      //       component: () => import('@/views/account/settings/Index'),
+      //       meta: { title: '个人设置', hideHeader: true, permission: [ 'user' ] },
+      //       redirect: '/account/settings/base',
+      //       hideChildrenInMenu: true,
+      //       children: [
+      //         {
+      //           path: '/account/settings/base',
+      //           name: 'BaseSettings',
+      //           component: () => import('@/views/account/settings/BaseSetting'),
+      //           meta: { title: '基本设置', hidden: true, permission: [ 'user' ] }
+      //         },
+      //         {
+      //           path: '/account/settings/security',
+      //           name: 'SecuritySettings',
+      //           component: () => import('@/views/account/settings/Security'),
+      //           meta: { title: '安全设置', hidden: true, keepAlive: true, permission: [ 'user' ] }
+      //         },
+      //         {
+      //           path: '/account/settings/custom',
+      //           name: 'CustomSettings',
+      //           component: () => import('@/views/account/settings/Custom'),
+      //           meta: { title: '个性化设置', hidden: true, keepAlive: true, permission: [ 'user' ] }
+      //         },
+      //         {
+      //           path: '/account/settings/binding',
+      //           name: 'BindingSettings',
+      //           component: () => import('@/views/account/settings/Binding'),
+      //           meta: { title: '账户绑定', hidden: true, keepAlive: true, permission: [ 'user' ] }
+      //         },
+      //         {
+      //           path: '/account/settings/notification',
+      //           name: 'NotificationSettings',
+      //           component: () => import('@/views/account/settings/Notification'),
+      //           meta: { title: '新消息通知', hidden: true, keepAlive: true, permission: [ 'user' ] }
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // }
 
       // other
       // {
