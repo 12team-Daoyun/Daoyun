@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>信息反馈</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<!-- 表格的格式不能居中，提交的信息不知道是不是能返回 -->
+
+<ion-content>
+
+  <ion-item>
+    <textarea [(ngModel)]="readyText" (ngModelChange)="onChangeText(readyText)" placeholder="提交您遇到的问题或者意见" rows="15"></textarea>
+  </ion-item>
+
+  <ion-list style="width: 80%;margin:0 auto;margin-top: 50px;" >  
+    <ion-button (click)="submit()"  style="width: 100%;display: table;">提交</ion-button>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>修改信息</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="full">
+
+    <ion-item>
+      头像
+      <span class="item_note" slot="end">
+        <img src="../../../../assets/img/touxiang.png" />
+      </span>
+    </ion-item>
+
+    <ion-item>
+      姓名
+      <span class="item_note" slot="end">
+        黄同学
+      </span>
+    </ion-item>
+
+    <ion-item class="item-icon-right">
+      昵称
+      <span class="item_note" slot="end">
+        我真帅
+      </span>
+    </ion-item>
+
+    <ion-item class="item-icon-right">
+      个人简介
+      <span class="item_note" slot="end">
+        我真帅
+      </span>
+    </ion-item>
+
+    <ion-item (click)="showSex()">
+      性别
+      <ion-grid text-center>
+        <ion-row style="font-size: 1em;">
+          <ion-col  col-4  *ngFor="let item of list,let i =index" (click)="choose_gender(i)">{{item.value}}&nbsp; <ion-icon name="checkmark-circle"  [ngClass]="{'button-clear-ios-primary': item.chek,'button-clear-ios-my':!item.chek}"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item class="item-icon-right">
+      院系
+      <span class="item_note" slot="end">
+        福州大学 数学与计算机科学学院
+      </span>
+    </ion-item>
+
+    <ion-item>
+      选择身份
+      <ion-grid text-center>
+        <ion-row style="font-size: 1em;">
+          <ion-col  col-4  *ngFor="let item of list2,let i =index2" (click)="choose_identity(i)">{{item.value}}&nbsp; <ion-icon name="checkmark-circle"  [ngClass]="{'button-clear-ios-primary': item.chek,'button-clear-ios-my':!item.chek}"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>  
+
+  </ion-list>
+
+  <ion-list style="width: 80%;margin:0 auto;margin-top: 50px;" >  
+    <ion-button (click)="finish()"  style="width: 100%;display: table;">完成</ion-button>
+  </ion-list>
+
+</ion-content>

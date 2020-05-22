@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: LoginPage
+  },
+  {
+    path: 'validate-login',
+    loadChildren: () => import('./validate-login/validate-login.module').then( m => m.ValidateLoginPageModule)
   }
 ];
 

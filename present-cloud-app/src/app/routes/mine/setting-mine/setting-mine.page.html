@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>设置</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="full"> 
+
+    <ion-item style="height: auto;">
+      <span> 关于我们</span>
+      <ion-icon (click)="to_aboutUs()" name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item> 
+
+    <ion-item style="height: auto;">
+      <span> 信息反馈</span>
+      <ion-icon (click)="to_feedback()" name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item> 
+
+    <ion-item style="height: auto;">
+      <span> 版本信息</span>
+      <ion-icon (click)="to_version()" name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item> 
+ 
+  </ion-list>
+
+  <ion-list style="width: 80%;margin:0 auto;margin-top: 50px;" >  
+    <ion-button (click)="exit()"  style="width: 100%;display: table;">退出班课</ion-button>
+  </ion-list>
+
+</ion-content>

@@ -1,17 +1,43 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" style="background: rgb(248, 248, 248);">
   <ion-toolbar>
-    <ion-title>
+    <ion-title style="text-align: center;">
       我的
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">我的</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content [fullscreen]="true">
+
+  <ion-list lines="full">      
+
+    <ion-item style="height: auto;">
+      <ion-avatar item-left style="margin-right: 13px;">
+        <img src="../../../assets/img/touxiang.png" />
+      </ion-avatar>
+      <span> 黄同学</span>
+      <ion-icon (click)="to_change()" name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item> 
+
+    <ion-item (click)="to_user_agreement()">
+      <ion-icon name="document-text-outline" slot="start" color="success"></ion-icon>
+      <span> 用户协议</span>
+    </ion-item>
+    
+    <ion-item (click)="to_about_the_software()">
+      <ion-icon name="receipt-outline" slot="start" color="success"></ion-icon>
+      <span> 关于软件</span>
+    </ion-item>
+
+    <ion-item (click)="to_setting()"> 
+      <ion-icon name="build-outline" slot="start" color="success"></ion-icon>
+      <span> 设置</span>
+    </ion-item>
+        
+  </ion-list>
+
+  <ion-list style="width: 80%;margin:0 auto;margin-top: 50px;" >  
+    <ion-button (click)="exit()"  style="width: 100%;display: table;">退出班课</ion-button>
+  </ion-list>
+
 </ion-content>

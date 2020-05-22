@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button style="position: absolute;font-size: 17px;" (click)="dismissModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons style="position: absolute;right: 0px;" slot="end">
+      <ion-button (click)="goScore()" expand="block" fill="clear" shape="round">
+        去评分
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">作业详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="background: rgb(187, 187, 187);height: 35px;line-height: 35px;padding-left: 10px;">
+    <span style="color: royalblue;">作业分值10分</span> | 老师评分
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>01作业1</ion-label>
+    </ion-item>
+    <!-- Textarea in an item with a floating label -->
+    <ion-item>
+      <ion-label position="floating">作业要求</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+  
+    <!-- Textarea in an item with a floating label -->
+    <ion-item>
+      <ion-label position="floating">作业内容</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+  <div style="position: absolute;bottom: 20px;left: 15px;">
+    <span style="display: block;">已提交30组</span>
+    <span>还有1组未提交</span>
+  </div>
+</ion-content>

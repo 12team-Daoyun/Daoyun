@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActionSheetController, IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./lessons.page.scss'],
 })
 export class LessonsPage implements OnInit {
-
+  @ViewChild('lessonSlides', {static: false})
+  lessonSlides: IonSlides;
   constructor(private actionSheetController: ActionSheetController, private router: Router) { }
-
+  createLessonColor = 'rgb(62, 131, 232)';
+  joinLessonColor = '';
   ngOnInit() {
   }
   async addLession() {
@@ -39,6 +41,28 @@ export class LessonsPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  ionViewDidEnter() {
+    this.lessonSlides.lockSwipes(true);
+  }
+
+  goDetail() {
+    this.router.navigateByUrl('lesson-detail-tabs');
+  }
+  createLesson() {
+    this.lessonSlides.lockSwipes(false);
+    this.lessonSlides.slideTo(0);
+    this.createLessonColor = 'rgb(62, 131, 232)';
+    this.joinLessonColor = '';
+    this.lessonSlides.lockSwipes(true);
+  }
+  joinLesson() {
+    this.lessonSlides.lockSwipes(false);
+    this.lessonSlides.slideTo(1);
+    this.createLessonColor = '';
+    this.joinLessonColor = 'rgb(62, 131, 232)';
+    this.lessonSlides.lockSwipes(true);
   }
 
 }
