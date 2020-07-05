@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { Router } from '@angular/router';
 const APP_KEY = 'App';
@@ -19,7 +19,8 @@ export class WelcomePage implements OnInit {
   @ViewChild(IonSlides, {static: false})
   slides: IonSlides;
 
-  constructor(private router: Router, private localStorageService: LocalStorageService) {
+  constructor(private router: Router,
+              private localStorageService: LocalStorageService, private navCtrl: NavController) {
    }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class WelcomePage implements OnInit {
       return true;
     } else {
       console.log(1);
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('login');
     }
   }
 
@@ -63,9 +64,10 @@ export class WelcomePage implements OnInit {
   }
 
   onSkip() {
-    this.router.navigateByUrl('signup');
+    this.navCtrl.navigateForward('login');
   }
   onClick() {
-    this.router.navigateByUrl('login');
+    // this.router.navigateByUrl('login');
+    this.navCtrl.navigateForward('login');
   }
 }

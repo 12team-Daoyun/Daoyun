@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button style="position: absolute;font-size: 17px;" (click)="dismissModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">发布作业</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>作业名称</ion-label>
+      <ion-input type="text" placeholder="请输入作业名字"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>作业描述</ion-label>
+      <ion-input type="text" placeholder="请输入作业概述"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>作业内容</ion-label>
+      <ion-input type="text" placeholder="请输入作业内容"></ion-input>
+    </ion-item>
+    <ion-button (click)="onClick()" expand="block" style="width: 90%;margin: 90px auto" shape="round">
+      发布
+    </ion-button>
+  </ion-list>
+</ion-content>

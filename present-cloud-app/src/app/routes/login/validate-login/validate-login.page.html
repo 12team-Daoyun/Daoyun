@@ -1,0 +1,29 @@
+<ion-header style="height: 30%;background: url('../../../assets/img/background.png');">
+  <img src="../../../assets/img/logo2.png" alt="">
+</ion-header>
+<ion-content>
+        <ion-list style="width: 80%;margin: 0 auto;padding-top: 30px;">
+          <div style="margin-bottom: 10px;height:100%;padding-left: 20px;">
+            <ion-label>验证码已发送至 {{phoneNumber}}</ion-label>
+          </div>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="inputValidateCode" placeholder="请输入验证码"></ion-input>
+          </ion-item>
+          <div style="width: 85%;height: 45px;text-align: right;margin: 0 auto;">
+            <ion-label style="font-size: 15px;margin-top: 10px;float: left;">收不到验证码</ion-label>
+            <ion-label [hidden] = "retrieveCodeHidden" style="font-size: 15px;margin-top: 10px;float: right;"><a (click)="retrieveCode()">重新获取</a></ion-label>
+            <ion-label [hidden] = "countHidden" style="font-size: 15px;margin-top: 10px;float: right;">{{countSec}}s后重新获取</ion-label>
+          </div> 
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button color="light" style="width: 100%;margin-top: 100px;border-radius: 5px" (click)="preStep()">上一步</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button bac color="primary" style="width: 100%;margin-top: 100px;border-radius: 5px" (click)="login()">登录</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>         
+        </ion-list>
+</ion-content>
+

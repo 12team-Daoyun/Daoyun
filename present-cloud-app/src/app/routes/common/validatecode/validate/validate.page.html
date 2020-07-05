@@ -2,33 +2,45 @@
   <img src="../../../assets/img/logo2.png" alt="">
 </ion-header>
 <ion-content>
-  <ion-slides pager="false">
+  <ion-slides pager="false" #validateSlides>
       <ion-slide>
           <ion-list style="margin-top: 10px;">
               <ion-item>
                 <ion-icon name="call-outline"></ion-icon>
-                <ion-input type="number" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
+                <ion-input type="number" [(ngModel)]="phoneNumber" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
               </ion-item>
-              <ion-button color="primary" style="width: 100%;margin-top: 50px;">获取验证码</ion-button>
+              <ion-button color="primary" style="width: 100%;margin-top: 50px;" (click)="getCode()">获取验证码</ion-button>
               <div style="width: 100%; text-align: right;">
-                  <ion-label style="text-align: right;font-size: 15px;margin-top: 10px">已注册，去登陆</ion-label>
+                  <ion-label style="text-align: right;font-size: 15px;margin-top: 10px">
+                    <a (click)="goLogin()"> 已注册，去登陆</a>
+                  </ion-label>
               </div>     
           </ion-list>
       </ion-slide>
   
       <ion-slide>
-        <ion-list style="width: 80%;margin-top: 10px;">
-          <div style="margin-bottom: 10px;width: 100%;height:100%">
-            <ion-label>验证码已发送至 17000000000</ion-label>
+        <ion-list style="width: 80%;margin: 0 auto;padding-top: 30px;">
+          <div style="margin-bottom: 10px;height:100%;">
+            <ion-label>验证码已发送至 {{phoneNumber}}</ion-label>
           </div>
           <ion-item>
             <ion-input type="number" placeholder="请输入验证码"></ion-input>
           </ion-item>
-          <div style="width: 90%;height: 45px;text-align: right;margin: 0 auto;">
+          <div style="width: 85%;height: 45px;text-align: right;margin: 0 auto;">
             <ion-label style="font-size: 15px;margin-top: 10px;float: left;">收不到验证码</ion-label>
-            <ion-label style="font-size: 15px;margin-top: 10px;float: right;"><a href="#">50s后重新获取</a></ion-label>
+            <ion-label [hidden] = "retrieveCodeHidden" style="font-size: 15px;margin-top: 10px;float: right;"><a (click)="retrieveCode()">重新获取</a></ion-label>
+            <ion-label [hidden] = "countHidden" style="font-size: 15px;margin-top: 10px;float: right;">{{countSec}}s后重新获取</ion-label>
           </div> 
-          <ion-button color="primary" style="width: 100%;margin-top: 150px;">登录</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button color="light" style="width: 100%;margin-top: 100px;border-radius: 5px" (click)="preStep()">上一步</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button bac color="primary" style="width: 100%;margin-top: 100px;border-radius: 5px" (click)="nextStep()">下一步</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>         
         </ion-list>
       </ion-slide>
     </ion-slides>

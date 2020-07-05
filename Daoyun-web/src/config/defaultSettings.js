@@ -12,8 +12,11 @@
  * storageOptions: {} - Vue-ls 插件配置项 (localStorage/sessionStorage)
  *
  */
+import Env from './env'
 
 export default {
+  // eslint-disable-next-line no-undef
+  env: Env,
   primaryColor: '#52C41A', // primary color of ant design
   navTheme: 'dark', // theme for nav menu
   layout: 'sidemenu', // nav menu position: sidemenu or topmenu

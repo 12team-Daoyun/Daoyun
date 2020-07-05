@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>版本信息</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- 存在还没下划线去掉，以及文字无法居中问题 -->
+
+  <ion-list style="text-align:center" lines="full">
+
+    <ion-item style="text-align:center">
+      <span>
+        到云版本信息
+      </span>
+    </ion-item>
+
+    <ion-item style="text-align:center">
+      <span>
+        版本：1.0.0 发布日期：2020.03.05
+      </span>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

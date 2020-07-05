@@ -2,8 +2,8 @@
   <div style="background-color: rgb(248, 248, 248);height: 16%;box-shadow: 0px 0px 5px #292929;">
     <ion-list
       style="padding: 10px 10px 5px 20px;font-size: 17px;font-weight: bold;background-color: rgb(248, 248, 248);">
-      <ion-label style="margin-right: 15px;color:rgb(62, 131, 232);">我创建的</ion-label>
-      <ion-label>我加入的</ion-label>
+      <ion-label (click)="createLesson()" [style.color]="createLessonColor" style="margin-right: 15px;">我创建的</ion-label>
+      <ion-label (click)="joinLesson()" [style.color]="joinLessonColor">我加入的</ion-label>
       <img src="../../../assets/img/addLesson.png" (click)="addLession()" style="float: right;width: 25px;height: 25px;"
         alt="">
     </ion-list>
@@ -15,7 +15,7 @@
 
   </div>
 
-  <ion-slides>
+  <ion-slides #lessonSlides>
 
     <ion-slide style="flex-direction: column;margin-top: 25%;">
       <img src="../../../assets/img/none.jpg" alt="">
@@ -24,7 +24,7 @@
 
     <ion-slide>
       <ion-list style="width: 100%;margin-top: 5px;">
-        <ion-item>
+        <ion-item (click)="goDetail()">
           <img style="margin-right: 15px" src="../../../assets/img/lessonList.png">
           <ion-label>
             <h2>工程实践1班</h2>
