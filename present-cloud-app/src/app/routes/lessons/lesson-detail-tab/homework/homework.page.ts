@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ModalController, NavController } from '@ionic/angular';
 import { AddHomeworkPage } from './add-homework/add-homework.page';
 import { HomeworkDetailPage } from './homework-detail/homework-detail.page';
+import { LessonDetailTabPage } from '../lesson-detail-tab.page';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Constants } from 'src/app/shared/constant';
+import { EventService } from 'src/app/shared/services/event.service';
 
 @Component({
   selector: 'app-homework',
@@ -11,22 +15,48 @@ import { HomeworkDetailPage } from './homework-detail/homework-detail.page';
 })
 export class HomeworkPage implements OnInit {
   // tslint:disable-next-line:align
+  // tslint:disable-next-line:variable-name
+  class_id: any;
+  lesson: object;
+  homeworks: Array<object>;
+  // tslint:disable-next-line:max-line-length
+  constructor(private eventService: EventService, private http: HttpClient, private router: Router, private modalController: ModalController, private nav: NavController) {
+   }
 
-  constructor(private router: Router, private modalController: ModalController) { }
-
-  ngOnInit() {
+   ngOnInit() {
+    this.class_id = LessonDetailTabPage.class_id;
+    this.lesson = LessonDetailTabPage.lesson;
+    this.eventService.event.on('updateHomework', () => {
+      this.getHomeworks(this.class_id);
+      return;
+    });
+    this.getHomeworks(this.class_id);
   }
-  async presentModal(myComponent: any) {
+  getHomeworks(classId: any) {
+    this.http.post(Constants.getHomeworkListByClassIdUrl, new HttpParams().set('class_id', classId))
+      .subscribe(data => {
+        if ((data as any).status === 1) {
+          this.homeworks = (data as any).data;
+          localStorage.setItem('homeworks', JSON.stringify(this.homeworks));
+          console.log(this.homeworks);
+        }
+      });
+  }
+  async presentModal(myComponent: any, workid: any) {
     const modal = await this.modalController.create({
       component: myComponent,
-      componentProps: {}
+      componentProps: {work_id: workid, class_id: this.class_id}
     });
     return await modal.present();
   }
   addHomework() {
-      this.presentModal(AddHomeworkPage);
+      this.presentModal(AddHomeworkPage, '');
   }
-  showDetail() {
-      this.presentModal(HomeworkDetailPage);
+  showDetail(workid) {
+      console.log(workid);
+      this.presentModal(HomeworkDetailPage, workid);
+  }
+  goBack() {
+    this.nav.navigateBack('tabs/lessons');
   }
 }

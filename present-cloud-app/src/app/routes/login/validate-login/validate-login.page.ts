@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, LoadingController } from '@ionic/angular';
+import { HTTP } from '@ionic-native/http/ngx';
+import { Constants } from 'src/app/shared/constant';
+import { LessonServiceService } from 'src/app/shared/services/lesson-service.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-validate-login',
@@ -12,11 +16,12 @@ export class ValidateLoginPage implements OnInit {
   countSec = 60;
   retrieveCodeHidden = true;
   countHidden = false;
-  validateCode;
+  validateCode = '';
   inputValidateCode;
   showError = true;
   constructor(private router: Router, private navCtrl: NavController, private activeRoute: ActivatedRoute,
-              private toastController: ToastController) {
+              private toastController: ToastController, private http: HttpClient, public loadingController: LoadingController,
+              private lessonService: LessonServiceService) {
     this.activeRoute.queryParams.subscribe((params: Params) => {
             this.phoneNumber = params.number;
         });
@@ -73,16 +78,27 @@ export class ValidateLoginPage implements OnInit {
     this.presentToast(res);
   }
   login() {
-    if (this.inputValidateCode === this.validateCode) {
-      this.navCtrl.navigateForward('tabs/lessons');
+    if (this.validateCode !== '' && this.inputValidateCode === this.validateCode) {
+      this.lessonService.show('登录中...');
+      // 验证码登录成功，访问后台获取用户信息后跳转到首页②
+      // tslint:disable-next-line:prefer-const
+      let params = new HttpParams().set('tel', this.phoneNumber);
+      this.http.post(Constants.getUserByPhoneUrl, params)
+      .subscribe(data => {
+        // 存储用户信息
+        const user = (data as any).data;
+        localStorage.setItem('user', JSON.stringify(user));
+        const userId = user.User_ID;
+        // 2、获取班课信息，并存入本地存储
+        this.lessonService.updateLessons(userId);
+      });
     } else {
       this.presentErrorToast('验证码有误，请重新输入');
       return;
     }
   }
   preStep() {
-    // this.router.navigateByUrl('login');
-    this.navCtrl.navigateBack('login');
+    this.router.navigateByUrl('login');
   }
   retrieveCode() {
     this.countSec = 60;

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HTTP } from '@ionic-native/http/ngx';
+import { LessonServiceService } from 'src/app/shared/services/lesson-service.service';
+import { Constants } from 'src/app/shared/constant';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-change-mine',
@@ -7,49 +11,56 @@ import { Router } from '@angular/router';
   styleUrls: ['./change-mine.page.scss'],
 })
 export class ChangeMinePage implements OnInit {
-
-  list=[{"key":"nan","value":'男',"chek":true},{"key":"nv","value":'女',"chek":false}];
-  data={"key":"nan","value":'男',"chek":true};
-
-  list2=[{"key":"student","value":'学生',"chek":true},{"key":"teacher","value":'老师',"chek":false}];
-  data2={"key":"student","value":'学生',"chek":true};
-
-  constructor(private router: Router) { }
+  user: object;
+  constructor(private nav: NavController, private http: HTTP, private lessonService: LessonServiceService
+              // tslint:disable-next-line:align
+              , public alertController: AlertController) {}
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
-
-  finish() {
-    this.router.navigateByUrl('tabs/mine');
-  }
-  
-  goBack(){
-    this.router.navigateByUrl('tabs/mine');
-  }
-
-  public choose_gender(i){
-    let me_gender=this;
-    this.list.forEach(function(data,inde,array) {
-      if(i==inde){
-        data.chek=true;
-        me_gender.data=data;
-      }else{
-        data.chek=false
-      }
+  async presentAlert(text) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: '系统提示',
+      message: text,
+      buttons: ['OK']
     });
+
+    await alert.present();
   }
 
-  public choose_identity(i){
-    let me_identity=this;
-    this.list2.forEach(function(data2,inde2,array) {
-      if(i==inde2){
-        data2.chek=true;
-        me_identity.data=data2;
-      }else{
-        data2.chek=false
-      }
-    });
+  // finish() {
+  //   if (this.identity === this.user.identity && this.sex === this.user.sex && this.identity !== '') {
+  //     this.router.navigateByUrl('tabs/mine');
+  //     return;
+  //   }
+  //   if (this.identity === '') {
+  //     this.presentAlert('请完善信息');
+  //     return;
+  //   }
+  //   // 更新用户信息
+  //   this.user.sex = this.sex;
+  //   this.user.identity = this.identity;
+  //   this.lessonService.createLoading('正在更新用户信息');
+  //   this.http.post(Constants.updateUserInfoUrl, {user: JSON.stringify(this.user)}, {})
+  //     .then(data => {
+  //       if (data.status === 1) {
+  //         this.lessonService.onDismiss();
+  //         this.router.navigateByUrl('tabs/mine');
+  //       } else {
+  //         this.presentAlert('信息更新失败，请重新尝试');
+  //       }
+  //     });
+  // }
+  // updateSex(sex) {
+  //   this.sex = sex;
+  // }
+  // updateIdentity(identity) {
+  //   this.identity = identity;
+  // }
+
+  goBack() {
+    this.nav.navigateBack('tabs/mine');
   }
-
-
 }

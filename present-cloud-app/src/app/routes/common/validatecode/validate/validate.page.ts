@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides, ToastController } from '@ionic/angular';
+import { HTTP } from '@ionic-native/http/ngx';
+import { Constants } from 'src/app/shared/constant';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-validate',
@@ -10,15 +13,17 @@ import { IonSlides, ToastController } from '@ionic/angular';
 export class ValidatePage implements OnInit {
   @ViewChild('validateSlides', {static: false})
   validateSlides: IonSlides;
-  constructor(private router: Router, private toastController: ToastController) { }
+  constructor(private router: Router, private toastController: ToastController, private http: HttpClient) { }
   phoneNumber;
   countSec = 60;
   retrieveCodeHidden;
   countHidden;
   timer: any;
-  validateCode;
+  validateCode = '';
+  inputValidateCode;
   ngOnInit() {
   }
+
   count() {
     let sendTime = Math.random() * 5;
     sendTime = parseInt(sendTime.toString(), 10) + 1;
@@ -47,11 +52,20 @@ export class ValidatePage implements OnInit {
     this.validateSlides.lockSwipes(true);
   }
   nextStep() {
-    this.router.navigateByUrl('register');
+    if (this.validateCode !== '' && this.inputValidateCode === this.validateCode) {
+      this.router.navigate(['register'], {
+        queryParams: {
+            number: this.phoneNumber
+        }
+      });
+    } else {
+      this.presentToast('验证码有误，请重新输入');
+      return;
+    }
   }
-  async presentToast(code: string) {
+  async presentToast(text: string) {
     const toast = await this.toastController.create({
-      message: '验证码为：' + code,
+      message: text,
       duration: 5000
     });
     toast.present();
@@ -66,14 +80,33 @@ export class ValidatePage implements OnInit {
       res = res + num;
     }
     this.validateCode = res;
-    this.presentToast(res);
+    this.presentToast('验证码为：' + res);
+  }
+
+
+  // 验证手机号格式
+  validatePhone(phone: string) {
+    return (/^1[3456789]\d{9}$/.test(this.phoneNumber));
   }
   getCode() {
-    this.validateSlides.lockSwipeToNext(false);
-    this.validateSlides.slideNext();
-    this.countSec = 60;
-    this.count();
-    this.validateSlides.lockSwipeToNext(true);
+    if (!this.validatePhone(this.phoneNumber)) {
+      this.presentToast('用户名格式有误，请重新输入');
+      return;
+    }
+    // tslint:disable-next-line:prefer-const
+    let promise = this.http.post(Constants.existUserUrl, new HttpParams().set('tel',  this.phoneNumber));
+    return promise.subscribe(data => {
+      if ((data as any).status === 1) {
+        console.log(data);
+        this.presentToast('用户名已存在，请重新输入');
+        return;
+      }
+      this.validateSlides.lockSwipeToNext(false);
+      this.validateSlides.slideNext();
+      this.countSec = 60;
+      this.count();
+      this.validateSlides.lockSwipeToNext(true);
+    });
   }
   preStep() {
     this.validateSlides.lockSwipeToPrev(false);

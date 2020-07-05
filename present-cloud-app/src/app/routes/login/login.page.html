@@ -17,19 +17,20 @@
         <ion-slide>
             
             <ion-list>
-                <ion-item>
-                    <ion-select value="+86"
-                        style="height: 20px;padding-right: 5px;border-right: solid;border-width: 1px;border-color: grey;">
-                        <ion-select-option value="+86">
-                            +86
-                        </ion-select-option>
-                    </ion-select>
-                    <ion-input type="tel" name="tel" required [(ngModel)]="user.name" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
-                </ion-item>
-                <ion-button (click)="nextStep()" color="primary" style="width: 100%;margin-top: 50px;">下一步</ion-button>
-                <div style="width: 100%; text-align: right;margin-top: 5px;">
-                    <ion-label style="text-align: right;font-size: 15px;"><a (click)="register()">新用户注册</a></ion-label>
-                </div>
+                    <ion-item>
+                        <ion-select value="+86"
+                            style="height: 20px;padding-right: 5px;border-right: solid;border-width: 1px;border-color: grey;">
+                            <ion-select-option value="+86">
+                                +86
+                            </ion-select-option>
+                        </ion-select>
+                        <ion-input type="tel" name="tel" required [(ngModel)]="user.phone" placeholder="请输入手机号" style="margin-left: 10px;"></ion-input>
+                    </ion-item>
+                    <ion-button (click)="nextStep()" color="primary" style="width: 100%;margin-top: 50px;">下一步</ion-button>
+                    <div style="width: 100%; text-align: right;margin-top: 5px;">
+                        <ion-label style="text-align: right;font-size: 15px;"><a (click)="register()">新用户注册</a></ion-label>
+                    </div>
+                
             </ion-list>
         </ion-slide>
 
@@ -37,11 +38,11 @@
             <ion-list>
                 <ion-item>
                     <ion-icon name="person-circle-outline"></ion-icon>
-                    <ion-input type="number" placeholder="请输入账号"></ion-input>
+                    <ion-input type="number" [(ngModel)]="user.name" placeholder="请输入账号"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <ion-input type="password" placeholder="请输入密码"></ion-input>
+                    <ion-input type="password" [(ngModel)]="user.pwd" placeholder="请输入密码"></ion-input>
                 </ion-item>
                 <ion-button color="primary" style="width: 100%;margin-top: 50px;" (click)="login()">登录</ion-button>
                 <div style="width: 90%;height: 45px;text-align: right;margin: 0 auto;">

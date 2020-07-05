@@ -8,17 +8,14 @@
 
 <ion-content [fullscreen]="true">
 
-
-  <ion-button (click)="find()" fill="outline" expand="block" style="margin-top: 20px;" > 
-    <ion-label>发现</ion-label>
-  </ion-button>
-
-  <ion-button (click)="kechenquan()" fill="outline" expand="block" style="margin-top: 50px;"> 
-    <ion-avatar item-left>
-      <img src="../../../assets/img/kechenquan.png" />
-    </ion-avatar>
-    课程圈
-    <!-- <ion-icon name="code-outline" slot="end"></ion-icon> -->
+  <ion-button (click)="goCurriculumCircle()" fill="outline" expand="block" style="--border-radius: 0%"> 
+    <div style="display: flex;flex-direction: row;position: absolute;left: -10px;">
+      <ion-avatar>
+        <img style="max-width: 86%;max-height: 85%;padding-top: 7px;" src="../../../assets/img/kechenquan.png"/>
+      </ion-avatar>
+      <ion-label style="line-height: 50px;">课程圈</ion-label>
+    </div>
+    <ion-icon style="position: absolute;right: 0px;" name="code-outline"></ion-icon>
   </ion-button>
 
 </ion-content>

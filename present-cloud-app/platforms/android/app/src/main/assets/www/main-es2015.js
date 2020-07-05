@@ -707,8 +707,104 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: () => __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule) },
+    {
+        path: 'curriculumCirclePage',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-discover-curriculum-circle-curriculum-circle-module */ "routes-discover-curriculum-circle-curriculum-circle-module").then(__webpack_require__.bind(null, /*! ./routes/discover/curriculum-circle/curriculum-circle.module */ "./src/app/routes/discover/curriculum-circle/curriculum-circle.module.ts")).then(m => m.CurriculumCirclePageModule)
+    },
+    {
+        path: 'signup',
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-lesson-detail-tab-member-sign-in-sign-in-module */[__webpack_require__.e("common"), __webpack_require__.e("routes-lessons-lesson-detail-tab-member-sign-in-sign-in-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/lesson-detail-tab/member/sign-in/sign-in.module */ "./src/app/routes/lessons/lesson-detail-tab/member/sign-in/sign-in.module.ts")).then(m => m.SignInPageModule)
+    },
+    {
+        path: 'tabs',
+        loadChildren: () => __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
+    },
+    {
+        path: 'welcome',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-welcome-welcome-module */ "routes-welcome-welcome-module").then(__webpack_require__.bind(null, /*! ./routes/welcome/welcome.module */ "./src/app/routes/welcome/welcome.module.ts")).then(m => m.WelcomePageModule)
+    },
+    {
+        path: 'register',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-register-register-module */ "routes-register-register-module").then(__webpack_require__.bind(null, /*! ./routes/register/register.module */ "./src/app/routes/register/register.module.ts")).then(m => m.RegisterPageModule)
+    },
+    {
+        path: '',
+        loadChildren: () => Promise.all(/*! import() | routes-login-login-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("routes-login-login-module")]).then(__webpack_require__.bind(null, /*! ./routes/login/login.module */ "./src/app/routes/login/login.module.ts")).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'login',
+        loadChildren: () => Promise.all(/*! import() | routes-login-login-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("routes-login-login-module")]).then(__webpack_require__.bind(null, /*! ./routes/login/login.module */ "./src/app/routes/login/login.module.ts")).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'validate',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-common-validatecode-validate-validate-module */ "routes-common-validatecode-validate-validate-module").then(__webpack_require__.bind(null, /*! ./routes/common/validatecode/validate/validate.module */ "./src/app/routes/common/validatecode/validate/validate.module.ts")).then(m => m.ValidatePageModule)
+    },
+    {
+        path: 'validateLogin',
+        loadChildren: () => Promise.all(/*! import() | routes-login-validate-login-validate-login-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./routes/login/validate-login/validate-login.module */ "./src/app/routes/login/validate-login/validate-login.module.ts")).then(m => m.ValidateLoginPageModule)
+    },
+    {
+        path: 'addLesson',
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-add-lesson-add-lesson-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("routes-lessons-add-lesson-add-lesson-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/add-lesson/add-lesson.module */ "./src/app/routes/lessons/add-lesson/add-lesson.module.ts")).then(m => m.AddLessonPageModule)
+    },
+    {
+        path: 'joinLesson',
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-join-lesson-join-lesson-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("routes-lessons-join-lesson-join-lesson-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/join-lesson/join-lesson.module */ "./src/app/routes/lessons/join-lesson/join-lesson.module.ts")).then(m => m.JoinLessonPageModule)
+    },
+    {
+        path: 'lesson-detail-tabs',
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-lesson-detail-tab-lesson-detail-tab-module */[__webpack_require__.e("common"), __webpack_require__.e("routes-lessons-lesson-detail-tab-lesson-detail-tab-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/lesson-detail-tab/lesson-detail-tab.module */ "./src/app/routes/lessons/lesson-detail-tab/lesson-detail-tab.module.ts")).then(m => m.LessonDetailTabPageModule)
+    },
+    {
+        path: 'addHomework',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-lesson-detail-tab-homework-add-homework-add-homework-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/lesson-detail-tab/homework/add-homework/add-homework.module */ "./src/app/routes/lessons/lesson-detail-tab/homework/add-homework/add-homework.module.ts")).then(m => m.AddHomeworkPageModule)
+    },
+    {
+        path: 'score',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-lesson-detail-tab-homework-homework-detail-score-score-module */[__webpack_require__.e("common"), __webpack_require__.e("routes-lessons-lesson-detail-tab-homework-homework-detail-score-score-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/lesson-detail-tab/homework/homework-detail/score/score.module */ "./src/app/routes/lessons/lesson-detail-tab/homework/homework-detail/score/score.module.ts")).then(m => m.ScorePageModule)
+    },
+    {
+        path: 'mine',
+        loadChildren: () => Promise.all(/*! import() | routes-mine-mine-module */[__webpack_require__.e("common"), __webpack_require__.e("routes-mine-mine-module")]).then(__webpack_require__.bind(null, /*! ./routes/mine/mine.module */ "./src/app/routes/mine/mine.module.ts")).then(m => m.MinePageModule)
+    },
+    {
+        path: 'change-mine',
+        loadChildren: () => Promise.all(/*! import() | routes-mine-change-mine-change-mine-module */[__webpack_require__.e("default~detail-detail-module~homework-homework-module~routes-lessons-add-lesson-add-lesson-module~ro~569f27a1"), __webpack_require__.e("routes-mine-change-mine-change-mine-module")]).then(__webpack_require__.bind(null, /*! ./routes/mine/change-mine/change-mine.module */ "./src/app/routes/mine/change-mine/change-mine.module.ts")).then(m => m.ChangeMinePageModule)
+    },
+    {
+        path: 'about-the-software-mine',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-about-the-software-mine-about-the-software-mine-module */ "routes-mine-about-the-software-mine-about-the-software-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/about-the-software-mine/about-the-software-mine.module */ "./src/app/routes/mine/about-the-software-mine/about-the-software-mine.module.ts")).then(m => m.AboutTheSoftwareMinePageModule)
+    },
+    {
+        path: 'setting-mine',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-setting-mine-setting-mine-module */ "routes-mine-setting-mine-setting-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/setting-mine/setting-mine.module */ "./src/app/routes/mine/setting-mine/setting-mine.module.ts")).then(m => m.SettingMinePageModule)
+    },
+    {
+        path: 'about-us-setting-mine',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-setting-mine-about-us-setting-mine-about-us-setting-mine-module */ "about-us-setting-mine-about-us-setting-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/setting-mine/about-us-setting-mine/about-us-setting-mine.module */ "./src/app/routes/mine/setting-mine/about-us-setting-mine/about-us-setting-mine.module.ts")).then(m => m.AboutUsSettingMinePageModule)
+    },
+    {
+        path: 'informatino-feedback-setting-mine',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-setting-mine-informatino-feedback-setting-mine-informatino-feedback-setting-mine-module */ "informatino-feedback-setting-mine-informatino-feedback-setting-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/setting-mine/informatino-feedback-setting-mine/informatino-feedback-setting-mine.module */ "./src/app/routes/mine/setting-mine/informatino-feedback-setting-mine/informatino-feedback-setting-mine.module.ts")).then(m => m.InformatinoFeedbackSettingMinePageModule)
+    },
+    {
+        path: 'version-setting-mine',
+        // tslint:disable-next-line:max-line-length
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-setting-mine-version-setting-mine-version-setting-mine-module */ "version-setting-mine-version-setting-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/setting-mine/version-setting-mine/version-setting-mine.module */ "./src/app/routes/mine/setting-mine/version-setting-mine/version-setting-mine.module.ts")).then(m => m.VersionSettingMinePageModule)
+    },
+    {
+        path: 'user-agreement-mine',
+        loadChildren: () => __webpack_require__.e(/*! import() | routes-mine-user-agreement-mine-user-agreement-mine-module */ "routes-mine-user-agreement-mine-user-agreement-mine-module").then(__webpack_require__.bind(null, /*! ./routes/mine/user-agreement-mine/user-agreement-mine.module */ "./src/app/routes/mine/user-agreement-mine/user-agreement-mine.module.ts")).then(m => m.UserAgreementMinePageModule)
+    },
+    {
+        path: 'signupDetail',
+        loadChildren: () => Promise.all(/*! import() | routes-lessons-lesson-detail-tab-member-sign-in-sign-in-module */[__webpack_require__.e("common"), __webpack_require__.e("routes-lessons-lesson-detail-tab-member-sign-in-sign-in-module")]).then(__webpack_require__.bind(null, /*! ./routes/lessons/lesson-detail-tab/member/sign-in/sign-in.module */ "./src/app/routes/lessons/lesson-detail-tab/member/sign-in/sign-in.module.ts")).then(m => m.SignInPageModule)
+    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -767,7 +863,7 @@ let AppComponent = class AppComponent {
     }
     initializeApp() {
         this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
+            this.statusBar.show();
             this.splashScreen.hide();
         });
     }
@@ -809,9 +905,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/android-permissions/ngx */ "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+
+
+
+
 
 
 
@@ -826,16 +930,15 @@ let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]],
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
-            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-            _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__["AndroidPermissions"],
+            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClient"], _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_10__["HTTP"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_12__["File"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_13__["Geolocation"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
         ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
 ], AppModule);
 
@@ -908,7 +1011,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\exportProfileApp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\present-cloud-app\src\main.ts */"./src/main.ts");
 
 
 /***/ })

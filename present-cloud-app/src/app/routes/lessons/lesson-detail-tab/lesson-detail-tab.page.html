@@ -1,12 +1,20 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="member">
+    <ion-tab-button *ngIf="identity == 1" tab="member">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>成员</ion-label>
+    </ion-tab-button>
+    <ion-tab-button *ngIf="identity == 0" tab="member-student">
       <ion-icon name="people-outline"></ion-icon>
       <ion-label>成员</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="homework">
+    <ion-tab-button *ngIf="identity == 1" tab="homework">
+      <ion-icon name="book-outline"></ion-icon>
+      <ion-label>作业</ion-label>
+    </ion-tab-button>
+    <ion-tab-button *ngIf="identity == 0" tab="homework-student">
       <ion-icon name="book-outline"></ion-icon>
       <ion-label>作业</ion-label>
     </ion-tab-button>

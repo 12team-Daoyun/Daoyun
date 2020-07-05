@@ -2,52 +2,57 @@
   <div style="background-color: rgb(248, 248, 248);height: 16%;box-shadow: 0px 0px 5px #292929;">
     <ion-list
       style="padding: 10px 10px 5px 20px;font-size: 17px;font-weight: bold;background-color: rgb(248, 248, 248);">
-      <ion-label (click)="createLesson()" [style.color]="createLessonColor" style="margin-right: 15px;">我创建的</ion-label>
+      <ion-label *ngIf="identity == 1" (click)="createLesson()" [style.color]="createLessonColor" style="margin-right: 15px;">我创建的</ion-label>
       <ion-label (click)="joinLesson()" [style.color]="joinLessonColor">我加入的</ion-label>
-      <img src="../../../assets/img/addLesson.png" (click)="addLession()" style="float: right;width: 25px;height: 25px;"
-        alt="">
+      <img *ngIf="identity == 1" src="../../../assets/img/addLesson.png" (click)="addLessonForTeacher()" style="float: right;width: 25px;height: 25px;" alt="">
+      <img *ngIf="identity == 0" src="../../../assets/img/addLesson.png" (click)="addLessonForStudent()" style="float: right;width: 25px;height: 25px;" alt="">
     </ion-list>
     <div style="display: flex;flex-direction: row;">
-      <!-- <img src="../../../assets/img/search.png" style="width: 6%;height: 6%;margin-left: 20px;margin-right: 5px;padding-top: 13px;" alt="">
-        <ion-input type="text" placeholder="搜索我的班级"></ion-input> -->
-      <ion-searchbar color="rgb(248, 248, 248)"></ion-searchbar>
+      <ion-searchbar color="rgb(248, 248, 248)" (ionChange)="change()" placeholder="请按班级名称或教师姓名查询班课" [(ngModel)]='searchValue'></ion-searchbar>
     </div>
 
   </div>
 
   <ion-slides #lessonSlides>
-
-    <ion-slide style="flex-direction: column;margin-top: 25%;">
-      <img src="../../../assets/img/none.jpg" alt="">
-      <ion-label style="margin-top: 15px;">还没有创建的班课</ion-label>
+    <ion-slide *ngIf="identity == 1">
+      <ion-list *ngIf="createLessons != null && createLessons.length > 0" style="width: 100%;margin-top: 5px;">
+        <ion-item style="margin-top: 5px"  *ngFor="let createLesson of createLessons" (click)="goDetail(createLesson.class_id)">
+          <img style="margin-right: 15px" src="../../../assets/img/lessonList.png">
+          <ion-label>
+            <h2>{{createLesson.class_name}}</h2>
+            <h3>{{createLesson.teacher_name}}</h3>
+            <h3>{{createLesson.grade}}</h3>
+            <!-- <div style="display: flex;align-items: center;font-size: 14px;color: orange;">
+              <img style="width: 7%;" src="../../../assets/img/correct1.png">
+              已签到
+            </div> -->
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngIf="createLessons == null || createLessons.length == 0" style="width: 40%;margin-top: 25%;display: flex;flex-direction: column;">
+        <img src="../../../assets/img/none.jpg" alt="">
+        <ion-label style="margin-top: 15px;">暂无班课信息</ion-label>
+      </ion-list>
     </ion-slide>
 
     <ion-slide>
-      <ion-list style="width: 100%;margin-top: 5px;">
-        <ion-item (click)="goDetail()">
+      <ion-list *ngIf="joinLessons != null && joinLessons.length > 0" style="width: 100%;margin-top: 5px;">
+        <ion-item  style="margin-top: 5px"  *ngFor="let joinLesson of joinLessons" (click)="goDetail(joinLesson.class_id)">
           <img style="margin-right: 15px" src="../../../assets/img/lessonList.png">
           <ion-label>
-            <h2>工程实践1班</h2>
-            <h3>池老标 2019工硕</h3>
-            <div style="display: flex;align-items: center;font-size: 14px;color: orange;">
+            <h2>{{joinLesson.class_name}}</h2>
+            <h3>{{joinLesson.teacher_name}}</h3>
+            <h3>{{joinLesson.grade}}</h3>
+            <!-- <div style="display: flex;align-items: center;font-size: 14px;color: orange;">
               <img style="width: 7%;" src="../../../assets/img/correct1.png">
               已签到
-            </div>
+            </div> -->
           </ion-label>
         </ion-item>
-
-        <ion-item>
-
-          <img style="margin-right: 15px" src="../../../assets/img/lessonList.png">
-          <ion-label>
-            <h2>工程实践2班</h2>
-            <h3>池老标 2019工硕</h3>
-            <div style="display: flex;align-items: center;font-size: 14px;color: grey;">
-              <img style="width: 7%;" src="../../../assets/img/correct2.png">
-              未签到
-            </div>
-          </ion-label>
-        </ion-item>
+      </ion-list>
+      <ion-list *ngIf="joinLessons == null || joinLessons.length == 0" style="width: 40%;margin-top: 25%;display: flex;flex-direction: column;">
+        <img src="../../../assets/img/none.jpg" alt="">
+        <ion-label style="margin-top: 15px;">暂无班课信息</ion-label>
       </ion-list>
     </ion-slide>
 

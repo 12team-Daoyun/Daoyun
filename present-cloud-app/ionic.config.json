@@ -1,7 +1,8 @@
 {
   "name": "present-cloud-app",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

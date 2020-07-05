@@ -1,9 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
-  </ion-toolbar>
+  <div style="height: 120px;color: white;background: rgb(14, 212, 255);">
+    <ion-buttons style="position: absolute;left: 5px;top: 5px;" slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;padding-bottom: 80px;">{{lesson.class_name}}</ion-title>
+  </div>
 </ion-header>
-
+<div
+  style="border: 1px solid #d7d8da;width: 80%;height: 16%;position: absolute;background: white;z-index: 100;top: 65px;left: 38px;">
+  <div style="margin: 0 auto;display: flex;flex-direction: row;width: 160px;">
+    <img style="margin-top: 13px;height: 70%;width: 35%;margin-right: 15px" src="../../../assets/img/lessonList.png">
+    <div style="margin-top: 5px;">
+      <ion-label>
+        <h3>{{lesson.grade}}</h3>
+        <h3>{{lesson.class_name}}</h3>
+        <h3>{{lesson.teacher_name}}</h3>
+        <h3>ID:{{lesson.class_id}}</h3>
+      </ion-label>
+    </div>
+  </div>
+</div>
 <ion-content>
-
+  <ion-list style="height: 45px;border-bottom: 1px solid black;"></ion-list>
+<ion-list>
+  <ion-item class="ion-no-padding">
+    <ion-label style="padding-left: 10px;">云教材<br>
+      <p style="padding-top: 10px;">未设置</p>
+    </ion-label>
+  </ion-item>
+  <ion-item class="ion-no-padding">
+    <ion-label style="padding-left: 10px;">学校院系<br>
+      <p style="padding-top: 10px;">福州大学 数学与计算机科学学院</p>
+    </ion-label>
+  </ion-item>
+  <ion-item class="ion-no-padding">
+    <ion-label style="padding-left: 10px;">学习要求<br>
+      <p style="padding-top: 10px;">{{lesson.comments}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-button style="width: 335px;margin: 50px auto;" (click)="exit()" expand="block" fill="outline" shape="squar">
+     退出班课
+  </ion-button>
+</ion-list>
 </ion-content>

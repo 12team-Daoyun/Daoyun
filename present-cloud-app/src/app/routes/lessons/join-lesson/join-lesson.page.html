@@ -9,11 +9,21 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item style="margin-bottom: 10px;">
       <ion-label>班课ID</ion-label>
-      <ion-input type="text" placeholder="请输入班课ID"></ion-input>
+      <ion-input type="text" [(ngModel)]="lessonId" placeholder="请输入班课ID"></ion-input>
     </ion-item>
-    <ion-button (click)="onClick()" expand="block" style="width: 90%;margin: 90px auto" shape="round">
+    <ion-label style="margin: 20px;">可加入的班课:</ion-label>
+    <ion-item style="margin-top: 5px"  *ngFor="let lesson of lessons">
+      <img style="margin-right: 15px" src="../../../assets/img/lessonList.png">
+      <ion-label>
+        <h2>{{lesson.class_name}}</h2>
+        <h3>{{lesson.teacher_name}}</h3>
+        <h3>{{lesson.grade}}</h3>
+      </ion-label>
+      <ion-label style="margin-left: 50px">班课ID：{{lesson.class_id}}</ion-label>
+    </ion-item>
+    <ion-button (click)="joinLesson()" expand="block" style="width: 90%;margin: 20px auto" shape="round">
       完成
     </ion-button>
   </ion-list>

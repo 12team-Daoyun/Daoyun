@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons style="position: absolute;" slot="start">
+      <ion-back-button defaultHref="" text=""></ion-back-button>
+      </ion-buttons>
+    <ion-title style="text-align: center;">签到</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="signInMembers != null && signInMembers.length > 0">
+    <div style="border-bottom: 1px solid #d7d8da;padding:5px">已签到成员信息</div>
+    <div *ngFor="let signInMember of signInMembers" class="signupList">
+      <div style="width: 100%;">
+        <div style="float: left;">{{signInMember.userName}}<br>{{signInMember.signInTime}}</div>
+        <div style="float: right;">已签到</div>
+      </div>
+    </div>
+    <hr>
+  </ion-list>
+  <ion-list *ngIf="signInMembers == null || signInMembers.length == 0" style="width: 40%;margin: 25% auto;display: flex;flex-direction: column;">
+    <img src="../../../assets/img/none.jpg" alt="">
+    <ion-label style="margin: 15px auto;">暂无签到信息</ion-label>
+  </ion-list>
+</ion-content>

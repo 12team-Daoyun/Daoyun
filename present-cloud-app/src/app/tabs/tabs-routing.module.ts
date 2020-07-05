@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -36,17 +36,12 @@ const routes: Routes = [
               import('../routes/mine/mine.module').then(m => m.MinePageModule)
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/lessons',
-        pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/lessons',
+    redirectTo: 'tabs/lessons',
     pathMatch: 'full'
   }
 ];

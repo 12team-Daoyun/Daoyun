@@ -11,12 +11,12 @@
 
   <ion-list lines="full">      
 
-    <ion-item style="height: auto;">
+    <ion-item (click)="to_change()" style="height: auto;">
       <ion-avatar item-left style="margin-right: 13px;">
         <img src="../../../assets/img/touxiang.png" />
       </ion-avatar>
-      <span> 黄同学</span>
-      <ion-icon (click)="to_change()" name="chevron-forward-outline" slot="end"></ion-icon>
+      <span> {{user.User_Name}}</span>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item> 
 
     <ion-item (click)="to_user_agreement()">

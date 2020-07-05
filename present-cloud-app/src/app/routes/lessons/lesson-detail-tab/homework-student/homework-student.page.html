@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons style="position: absolute;" slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+      </ion-buttons>
+    <ion-title style="text-align: center;">{{lesson.class_name}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center;background: rgb(187, 187, 187);height: 25px;line-height: 25px;">
+    未分组
+  </div>
+
+  <ion-list style="width: 100%;">
+    <ion-item *ngFor="let homework of homeworks" (click)="showDetail(homework.workId,homework.classId)">
+      <img style="margin-right: 15px" src="../../../assets/img/homework.png">
+      <ion-label>
+        <h2>{{homework.workName}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="homeworks == null || homeworks.length == 0" style="width: 40%;margin: 25% auto;display: flex;flex-direction: column;">
+    <img src="../../../assets/img/none.jpg" alt="">
+    <ion-label style="margin: 15px auto;">暂未发布作业</ion-label>
+  </ion-list>
+
+</ion-content>

@@ -3,22 +3,66 @@
     <ion-buttons style="position: absolute;" slot="start">
       <ion-back-button defaultHref="" text=""></ion-back-button>
       </ion-buttons>
-    <ion-title style="text-align: center;">设置密码</ion-title>
+    <ion-title style="text-align: center;">完善用户信息</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-icon name="lock-closed-outline"></ion-icon>
-      <ion-input type="password" placeholder="输入密码"></ion-input>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input type="text" [(ngModel)]="user.User_Name" placeholder="输入姓名"></ion-input>
+    </ion-item>
+    <ion-item>
+      性别
+          <ion-radio-group [(ngModel)]="user.sex" style="display: flex;margin: 0 auto;">      
+            <ion-item style="--border-width: 0 0 1px 0">
+              <ion-label>男</ion-label>
+              <ion-radio value="1"></ion-radio>
+            </ion-item>
+        
+            <ion-item style="--border-width: 0 0 1px 0">
+              <ion-label>女</ion-label>
+              <ion-radio value="0"></ion-radio>
+            </ion-item>
+            </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      身份
+          <ion-radio-group [(ngModel)]="user.identity" style="display: flex;margin: 0 auto;">      
+            <ion-item style="--border-width: 0 0 1px 0">
+              <ion-label>老师</ion-label>
+              <ion-radio value="1"></ion-radio>
+            </ion-item>
+        
+            <ion-item style="--border-width: 0 0 1px 0">
+              <ion-label>学生</ion-label>
+              <ion-radio value="0"></ion-radio>
+            </ion-item>
+            </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      <ion-label>请选择学校</ion-label>
+      <ion-select [(ngModel)]="user.school">
+        <ion-select-option value="福州大学">福州大学</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>请选择专业</ion-label>
+      <ion-select [(ngModel)]="user.college">
+        <ion-select-option value="数学与计算机科学学院">数学与计算机科学学院</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-icon name="lock-closed-outline"></ion-icon>
-      <ion-input type="password" placeholder="确认密码"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.pwd" placeholder="输入密码"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input type="password" [(ngModel)]="user.repeatPwd" placeholder="确认密码"></ion-input>
     </ion-item>
     <div style="width: 100%;margin-top: 5px;">
-      <ion-label style="text-align: right;font-size: 15px;">密码长度8-32位，需包含数字、字母、符号至少2种或以上元素</ion-label>
+      <ion-label style="text-align: right;font-size: 15px;">至少8-16个字符，至少1个大写字母，1个小写字母和1个数字，其他可以是任意字符</ion-label>
   </div>
   <ion-button (click)="finishSignUp()" color="primary" style="width: 100%;margin-top: 50px;">注册完成</ion-button>
   </ion-list>

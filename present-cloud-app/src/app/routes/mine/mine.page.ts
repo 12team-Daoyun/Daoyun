@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./mine.page.scss'],
 })
 export class MinePage implements OnInit {
-
+  user: object;
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
   to_change() {
     this.router.navigateByUrl('change-mine');
@@ -26,6 +27,7 @@ export class MinePage implements OnInit {
     this.router.navigateByUrl('setting-mine');
   }
   exit() {
+    localStorage.clear();
     this.router.navigateByUrl('login');
   }
 }

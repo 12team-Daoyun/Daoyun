@@ -28,10 +28,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;      
-import android.provider.Settings;      
-import android.telephony.TelephonyManager;      
-import android.util.Log; 
 import android.provider.Settings;
 
 public class Device extends CordovaPlugin {
@@ -80,7 +76,6 @@ public class Device extends CordovaPlugin {
             r.put("manufacturer", this.getManufacturer());
 	        r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
-            r.put("imei", this.getImei());
             callbackContext.success(r);
         }
         else {
@@ -89,11 +84,6 @@ public class Device extends CordovaPlugin {
         return true;
     }
 
-    private String getImei() {
-        TelephonyManager systemService = (TelephonyManager)this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        String deviceId = systemService.getDeviceId();
-        return systemService.getDeviceId();
-    }
     //--------------------------------------------------------------------------
     // LOCAL METHODS
     //--------------------------------------------------------------------------

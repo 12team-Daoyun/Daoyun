@@ -3,10 +3,31 @@
     <ion-buttons style="position: absolute;" slot="start">
       <ion-back-button defaultHref="" text=""></ion-back-button>
       </ion-buttons>
-    <ion-title style="text-align: center;">评分</ion-title>
+    <ion-title style="text-align: center;">作业下载</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list *ngIf="files != undefined && files.length > 0">
+    <div *ngFor="let file of files" style="display: flex;flex-direction: row;border-bottom: 1px solid #d7d8da;">
+      <img style="padding: 5px 5px 5px 10px;width: 15%;height: 100%;" src="../../../assets/img/memberImg.png" alt="">
+      <div style="display: flex;flex-direction: row;width: 80%;padding: 7px 0px 0px 5px;">
+        <div style="display: flex;flex-direction: column;width: 50%;">
+          <div>
+            <label style="float: left;">{{file.userName}}</label>
+          </div>
+          <div>
+            <label style="float: left;color: #afafb1;font-size: 13px;">{{file.fileName}}</label>
+          </div>
+        </div>
+        <div style="margin-left: 100px;margin-top: 4px;" (click)="downloadFile(file.classId,file.workId,file.userId,file.fileName)">
+          <img style="max-width: 60%" src="../../../assets/img/download.png" alt="">
+        </div>
+      </div>
+    </div>
+  </ion-list>
+  <ion-list *ngIf="files == null || files.length == 0 || files == undefined" style="width: 40%;margin: 25% auto;display: flex;flex-direction: column;">
+    <img src="../../../assets/img/none.jpg" alt="">
+    <ion-label style="margin: 15px auto;">暂无学生提交作业</ion-label>
+  </ion-list>
 </ion-content>

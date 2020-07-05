@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>member</ion-title>
-  </ion-toolbar>
+  <div style="height: 120px;color: white;background: rgb(14, 212, 255);">
+    <ion-buttons style="position: absolute;left: 5px;top: 5px;" slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;padding-bottom: 80px;">{{lesson.class_name}}</ion-title>
+    <p style="position: absolute;color: black;top: 35px;left: 165px;">{{user.User_Name}}老师</p>
+  </div>
 </ion-header>
+<div (click)="signup()" style="display: flex;flex-direction: column;border: 1px solid #d7d8da;width: 80%;height: 13%;position: absolute;background: white;z-index: 100;top: 80px;left: 38px;">
+  <img style="margin: 0 auto;width: 55px;height: 55px;" src="../../../assets/img/pencil.png" alt="">
+  <div style="margin: 0 auto;">{{signInText}}</div>
+</div>
 
 <ion-content>
+  <ion-list style="height: 43px;border-bottom: 1px solid black;"></ion-list>
 
+    <ion-button (click)="signInDetail()" expand="block">
+      签到详情
+    </ion-button>
+  <ion-list>
+    <div style="height: 30px;line-height: 30px;border-bottom: 1px solid #d7d8da;">
+      <div style="float: left;padding-left: 10px;">成员总数</div>
+      <div style="float: right;padding-right: 10px;">{{members.length}}</div>
+    </div>
+    <ion-item *ngFor="let member of members" class="ion-no-padding" (click)="goDetail()">
+      <img src="../../../assets/img/memberImg.png">
+      <ion-label>
+        <h2>{{member.username}}</h2>
+        <h3 *ngIf="member.sex == 1">男</h3>
+        <h3 *ngIf="member.sex == 0">男</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

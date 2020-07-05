@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: DiscoverPage
+  },
+  {
+    path: 'curriculum-circle',
+    loadChildren: () => import('./curriculum-circle/curriculum-circle.module').then( m => m.CurriculumCirclePageModule)
   }
 ];
 

@@ -11,17 +11,26 @@
   <ion-list>
     <ion-item>
       <ion-label>班课名字</ion-label>
-      <ion-input type="text" placeholder="请输入班课名字"></ion-input>
+      <ion-input type="text" [(ngModel)]="lessonName" placeholder="请输入班课名字"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>任课老师</ion-label>
-      <ion-input type="text" placeholder="请输入任课老师姓名"></ion-input>
+      <ion-input type="text" [(ngModel)]="teacherName" placeholder="请输入任课老师姓名"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>年  级</ion-label>
+      <ion-select [(ngModel)]="grade">
+        <ion-select-option value="2019">2019</ion-select-option>
+        <ion-select-option value="2018">2018</ion-select-option>
+        <ion-select-option value="2017">2017</ion-select-option>
+        <ion-select-option value="2016">2016</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>备注信息</ion-label>
-      <ion-input type="text" placeholder="请输入备注信息"></ion-input>
+      <ion-input type="text" [(ngModel)]="comments" placeholder="请输入备注信息"></ion-input>
     </ion-item>
-    <ion-button (click)="onClick()" expand="block" style="width: 90%;margin: 90px auto" shape="round">
+    <ion-button (click)="addLesson()" expand="block" style="width: 90%;margin: 90px auto" shape="round">
       完成
     </ion-button>
   </ion-list>

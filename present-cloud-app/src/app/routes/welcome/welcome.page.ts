@@ -19,8 +19,7 @@ export class WelcomePage implements OnInit {
   @ViewChild(IonSlides, {static: false})
   slides: IonSlides;
 
-  constructor(private router: Router,
-              private localStorageService: LocalStorageService, private navCtrl: NavController) {
+  constructor(private localStorageService: LocalStorageService, private navCtrl: NavController) {
    }
 
   ngOnInit() {
@@ -39,7 +38,13 @@ export class WelcomePage implements OnInit {
       return true;
     } else {
       console.log(1);
-      this.router.navigateByUrl('login');
+      const user = localStorage.getItem('user');
+      if (user === undefined) {
+        this.navCtrl.navigateForward('login');
+      } else {
+        this.navCtrl.navigateForward('tabs/lessons');
+      }
+      console.log(user);
     }
   }
 

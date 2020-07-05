@@ -19,12 +19,32 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'member-student',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./member-student/member-student.module').then(m => m.MemberStudentPageModule)
+          }
+        ]
+      },
+      {
         path: 'homework',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('./homework/homework.module').then(m => m.HomeworkPageModule)
+          }
+        ]
+      },
+      {
+        path: 'homework-student',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./homework-student/homework-student.module').then(m => m.HomeworkStudentPageModule)
           }
         ]
       },
@@ -44,6 +64,14 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'homework-student',
+    loadChildren: () => import('./homework-student/homework-student.module').then( m => m.HomeworkStudentPageModule)
+  },
+  {
+    path: 'member-student',
+    loadChildren: () => import('./member-student/member-student.module').then( m => m.MemberStudentPageModule)
   }
 ];
 

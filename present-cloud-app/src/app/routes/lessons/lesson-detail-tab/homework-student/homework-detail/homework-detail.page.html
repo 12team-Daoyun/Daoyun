@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button style="position: absolute;font-size: 17px;" (click)="dismissModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">作业详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="background: rgb(187, 187, 187);height: 35px;line-height: 35px;padding-left: 10px;">
+    <span style="color: royalblue;">作业分值10分</span> | 老师评分
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{homework.workName}}</ion-label>
+    </ion-item>
+    <!-- Textarea in an item with a floating label -->
+    <ion-item>
+      <ion-label position="floating" style="margin-bottom: 35px;">作业内容</ion-label>
+      <ion-textarea disabled>{{homework.workContent}}</ion-textarea>
+    </ion-item>
+  
+    <!-- Textarea in an item with a floating label -->
+    <ion-item>
+      <ion-label position="floating" style="margin-bottom: 35px;">作业要求</ion-label>
+      <ion-textarea disabled>{{homework.workRequirement}}</ion-textarea>
+    </ion-item>
+
+  </ion-list>
+  <div *ngIf="!isUpload" style="position: absolute;bottom: 70px;left: 15px;">
+    
+    <input type="file" name="filename" (change)="upadateHomework()" /><br>
+    <input type="submit" value="上传" (click)="doUpload()" />
+
+  </div>
+  <div *ngIf="isUpload" style="position: absolute;bottom: 70px;left: 15px;">
+    
+    <p>作业已提交</p>
+
+  </div>
+</ion-content>
